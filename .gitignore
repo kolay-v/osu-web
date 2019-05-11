@@ -3,3 +3,5 @@ dist/
 yarn.lock
 yarn-error.log
 .env
+*.osu
+*.mp3

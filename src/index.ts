@@ -1,12 +1,9 @@
-import * as PIXI from 'pixi.js'
-import render from './render'
+import Game from './game'
+import parser from './parser'
 
-const app = new PIXI.Application()
+const game = new Game()
+fetch('easy.osu').then(r => r.text()).then(parser)
 
-document.body.appendChild(app.view)
-
-app.renderer.backgroundColor = 0xffffff
-
-render(app, 1)
-// render(app, 2)
-// render(app, 3)
+document.getElementById('btn').onclick = async () => {
+  game.run()
+}
