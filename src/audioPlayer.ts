@@ -1,23 +1,24 @@
 export default class AudioPlayer {
-  #state = false
+  private state = false
+  private audio: HTMLAudioElement
+  public song: string
 
-  constructor (song: string) {
+  public constructor (song: string) {
     this.song = song
-    this.#audio = new Audio(song)
+    this.audio = new Audio(song)
   }
 
-  public inverse = async () => {
-    if (this.#state) {
-        this.#audio.pause()
+  public inverse = async (): Promise<void|undefined> => {
+    if (this.state) {
+      this.audio.pause()
     } else {
       try {
-        await this.#audio.play()
+        await this.audio.play()
       } catch (e) {
         alert(e)
         return undefined
       }
     }
-      this.#state = !this.#state
-    
+    this.state = !this.state
   }
 }
