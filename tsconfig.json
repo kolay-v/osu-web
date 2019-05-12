@@ -4,11 +4,12 @@
         "allowSyntheticDefaultImports": true,
         "lib": [
             "dom",
-            "esnext"
+            "esnext",
+            "es5"
         ],
         "target": "esnext",
-        "module": "none",
-//        "moduleResolution": "node",
+        "module": "esnext",
+        "moduleResolution": "node",
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,

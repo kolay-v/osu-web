@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
@@ -14,7 +15,8 @@ const config = {
       errors: true
     },
     hot: true,
-    //public: '/',
+    contentBase: path.resolve(__dirname, '..', 'public'),
+    publicPath: '/',
     host: '0.0.0.0',
     port: 8000
   },
