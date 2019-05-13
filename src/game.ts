@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import AudioPlayer from './audioPlayer';
-import OSUJson, { OSUMap } from 'osu-json';
+import OSUJson from 'osu-json';
 
 export default class Game {
   private app: PIXI.Application;
