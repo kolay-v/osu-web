@@ -4,7 +4,6 @@ declare module 'osu-json' {
   }
 
   export default class OSUJson {
-    static ParseOSUFileAsync(file: string): Promise<unknown>;
+    public static ParseOSUFileAsync(file: string): Promise<unknown>;
   }
 }
-

@@ -5,4 +5,3 @@ import App from './App';
 import Game from './game';
 
 ReactDOM.render(<App game={new Game()} />, document.getElementById('root'));
-
