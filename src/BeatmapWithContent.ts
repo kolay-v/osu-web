@@ -1,6 +1,6 @@
 import { Beatmap } from 'osu-bpdpc'
 
 export default interface BeatmapWithContent extends Beatmap {
-  auido: Blob
+  audio: Blob
   bg: Blob | null
 }
