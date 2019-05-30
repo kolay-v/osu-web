@@ -14,7 +14,7 @@
     "core-js": "^2.6.5",
     "howler": "^2.1.2",
     "jszip": "^3.2.1",
-    "osu-bpdpc": "kolay-v/osu-bpdpc#cee756c",
+    "osu-bpdpc": "kolay-v/osu-bpdpc",
     "pixi.js-legacy": "^5.0.3",
     "register-service-worker": "^1.6.2",
     "snyk": "^1.169.2",

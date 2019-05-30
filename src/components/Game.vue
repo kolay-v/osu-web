@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span>{{ score }}</span>
     <canvas ref="game" height="512" width="512"></canvas>
     <p>game</p>
   </div>
@@ -7,7 +8,7 @@
 
 <script lang="ts">
 import * as PIXI from 'pixi.js-legacy'
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch, Provide } from 'vue-property-decorator'
 import BeatmapWithContent from '../BeatmapWithContent'
 import { blob2b64, log } from '../utils'
 import { HitObject } from 'osu-bpdpc/src/Beatmap'
@@ -18,6 +19,7 @@ import { Howl } from 'howler'
 export default class Game extends Vue {
   private app!: PIXI.Application
   @Prop() readonly map!: BeatmapWithContent | null
+  @Provide('score') score: number = 0
 
   @Watch('map') onMapChange (n: BeatmapWithContent | null) {
     return this.start()
@@ -40,7 +42,6 @@ export default class Game extends Vue {
   private async start () {
     const { map, app } = this
     if (map === null) return
-    //    <BeatmapWithContent>map
     if (map.bg !== null) {
       const bg = PIXI.Sprite.from(await blob2b64(map.bg))
       bg.x = 0
@@ -50,18 +51,19 @@ export default class Game extends Vue {
       this.app.stage.addChild(bg)
     }
     const audio = await blob2b64(map.audio)
-    const howl = new Howl({
+    const howl = await new Howl({
       src: audio,
       autoplay: true,
       format: 'mp3'
     })
-    map.HitObjects.map(obj =>
-      setTimeout(() => this.draw(obj), obj.startTime))
+    howl.once('load', () => map.HitObjects.map(obj =>
+      setTimeout(() => this.draw(obj), obj.startTime)
+    ))
   }
 
   private draw (obj: HitObject) {
-    log(obj.hitType & HitType.Normal, this.draw)
-    if ((obj.hitType & HitType.Normal) !== 0) {
+    if (obj.hitType & HitType.Normal) {
+      console.log(obj)
       let radius = 20
       const startRadius = radius
       const container = new PIXI.Container()
@@ -80,12 +82,14 @@ export default class Game extends Vue {
         helpP.endFill()
         if (startRadius > radius * 2) {
           container.destroy()
+          this.score--
           this.app.ticker.remove(onTick)
           log('end', this)
         }
       }
       objP.on('pointerdown', () => {
         container.destroy()
+        this.score++
         this.app.ticker.remove(onTick)
       })
       const helpP = new PIXI.Graphics()

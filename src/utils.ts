@@ -34,7 +34,7 @@ export const loadMap = (url: string, onProgress: (progress: number,
           ...level,
           audio: await zip.file(level.General.AudioFilename).async('blob'),
           bg
-        } as unknown as BeatmapWithContent
+        } as BeatmapWithContent
       })
     }).then(l => Promise.all(l))
 
