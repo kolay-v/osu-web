@@ -1,5 +1,7 @@
 # Osu web
 
+[![Build Status](https://travis-ci.org/kolay-v/osu-web.svg?branch=master)](https://travis-ci.org/kolay-v/osu-web)
+
 Osu! port writen in ts with pixi.js and vue
 
 ## Buildng
