@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>{{ score }}</span>
-    <canvas ref="game" height="512" width="512"></canvas>
+    <canvas ref="game" class="game-canvas"></canvas>
     <p>game</p>
   </div>
 </template>
@@ -14,6 +14,7 @@ import { blob2b64, log } from '../utils'
 import { HitObject } from 'osu-bpdpc/src/Beatmap'
 import { HitType, HitSound } from 'osu-bpdpc'
 import { Howl } from 'howler'
+import { win32 } from 'path'
 
 @Component
 export default class Game extends Vue {
@@ -27,10 +28,11 @@ export default class Game extends Vue {
 
   mounted () {
     this.app = new PIXI.Application({
-      width: 512,
+      width: 384,
       height: 512,
       backgroundColor: 0x000000,
-      view: this.$refs.game as HTMLCanvasElement
+      view: this.$refs.game as HTMLCanvasElement,
+      resizeTo: window
     })
     if (process.env.NODE_ENV === 'production' &&
      this.app.renderer.type === PIXI.RENDERER_TYPE.CANVAS) {
@@ -51,7 +53,7 @@ export default class Game extends Vue {
       this.app.stage.addChild(bg)
     }
     const audio = await blob2b64(map.audio)
-    const howl = await new Howl({
+    const howl = new Howl({
       src: audio,
       autoplay: true,
       format: 'mp3'
@@ -105,3 +107,9 @@ export default class Game extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.game {
+  color: rgb(68, 68, 68);
+}
+</style>
