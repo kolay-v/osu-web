@@ -17,7 +17,7 @@
     "osu-bpdpc": "kolay-v/osu-bpdpc",
     "pixi.js-legacy": "^5.0.3",
     "register-service-worker": "^1.6.2",
-    "snyk": "^1.169.2",
+    "snyk": "^1.231.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0"
