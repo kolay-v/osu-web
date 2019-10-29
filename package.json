@@ -25,7 +25,7 @@
   "devDependencies": {
     "@types/howler": "^2.1.0",
     "@types/jszip": "^3.1.6",
-    "@types/pixi.js": "^4.8.7",
+    "@types/pixi.js": "^5.0.0",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-plugin-pwa": "^3.7.0",
