@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "core-js": "^2.6.5",
+    "core-js": "^3.6.1",
     "howler": "^2.1.2",
     "jszip": "^3.2.1",
     "osu-bpdpc": "kolay-v/osu-bpdpc",
